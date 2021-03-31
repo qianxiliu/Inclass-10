@@ -1,0 +1,8 @@
+#All orders
+var result =
+    db.Orders
+      .Where(Product => Product.ProductID == id)
+      .SelectMany(Information => Order.OrdersID)
+      .ToList();
+
+#the maximum
