@@ -1,0 +1,64 @@
+#Build Store class.
+
+namespace retail.Models
+{
+    public class Store
+    {
+     
+        public int StoreID { get; set; }
+        public int ProductID { get; set; }
+        public string Location { get; set; }
+
+        public ICollection<Product> Products { get; set; }
+        
+    }
+} 
+
+#Build Product class.
+
+namespace retail.Models
+{
+    public class Product
+    {
+    
+        public int ProductID { get; set; }
+        public int OrderID { get; set; }
+        public string Description { get; set; }
+
+        public ICollection<Order> Orders { get; set; }
+        
+    }
+} 
+
+#Build Order class.
+
+namespace retail.Models
+{
+    public class Order
+    {
+    
+        public int OrderID { get; set; }
+        public int ProductID { get; set; }
+        public string Information { get; set; }
+
+        public ICollection<Product> Products { get; set; }
+        
+    }
+} 
+
+#Build Db class to connect with database
+namespace retail.Models 
+{
+    public class MyContext : DbContext
+    {
+        public MyContext(DbContextOptions<MyContext> options) : base(options)
+        {
+        }
+
+        public DbSet<Store> Stores { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+    }
+}
+
+
